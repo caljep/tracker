@@ -11,10 +11,14 @@ reading the battery level, and manually requesting a GPS reading.
 // Getting the library
 #include "AssetTrackerRK.h"
 
+void setup();
+void loop();
+#line 14 "/Users/calparticle/Desktop/repos/tracker/src/tracker.ino"
 int transmitMode(String command);
 int gpsPublish(String command);
 int batteryStatus(String command);
 int temp(String command);
+int counter;
 
 // Set whether you want the device to publish data to the internet by default here.
 // 1 will Particle.publish AND Serial.print, 0 will just Serial.print
@@ -58,7 +62,7 @@ void setup() {
 void loop() {
     // You'll need to run this every loop to capture the GPS output
     t.updateGPS();
-    //Serial.printlnf("testing %d", ++counter);
+    Serial.printlnf("testing %d", ++counter);
     // if the current time - the last time we published is greater than your set delay...
     if(millis()-lastPublish > delayMinutes*60*1000){
         // Remember when we published
